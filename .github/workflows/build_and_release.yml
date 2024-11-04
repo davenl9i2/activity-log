@@ -30,6 +30,7 @@ jobs:
         run: |
           git config --global user.name 'raymundlin'
           git config --global user.email '142639231+raymundlin@users.noreply.github.com'
+          git add .
           git commit -am "dist build"
           git push
 
