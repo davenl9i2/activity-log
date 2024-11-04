@@ -67,6 +67,7 @@ jobs:
           git pull
       - name: Tag it
         run: |
+          TIMESTAMP=$(date +'%Y%m%d%H%M%S')
           git tag -a ${{ inputs.tag }} -m "${{ inputs.note }}" master
           git push --tags -f  # 強制推送，覆蓋現有 Tag
       - name: Release
@@ -75,7 +76,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
           tag_name: ${{ inputs.tag }}
-          release_name: Release ${{ inputs.tag }}
+          release_name: "Release v1.0.0-$TIMESTAMP"
           body: ${{ inputs.note }}
           draft: false
           prerelease: false
